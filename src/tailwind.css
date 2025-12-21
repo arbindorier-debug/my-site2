@@ -1,8 +1,0 @@
-@import "tailwindcss";
-
-@layer base {
-  @import "tw-animate-css";
-}
-@layer components {
-  @import "tw-animate-css/components";
-}
