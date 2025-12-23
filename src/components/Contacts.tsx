@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Instagram, Youtube, Send, Video } from 'lucide-react';
 import emailjs from "@emailjs/browser";
-=======
-import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Instagram, Youtube, Send, Video } from 'lucide-react';
->>>>>>> main
 
 export function Contacts() {
   const contactInfo = [
@@ -31,11 +26,7 @@ export function Contacts() {
     {
       icon: Clock,
       title: 'Режим работы',
-<<<<<<< HEAD
       details: ['Пн-Пт: 9:00 - 18:00', 'Сб: 9:00 - 14:00', 'Вс: Выходной'],
-=======
-      details: ['Понедельник - Пятница: 9:00 - 18:00', 'Суббота: 9:00 - 14:00', 'Воскресенье: Выходной'],
->>>>>>> main
       color: 'from-green-600 to-green-700',
     },
   ];
@@ -64,7 +55,6 @@ export function Contacts() {
     },
   ];
 
-<<<<<<< HEAD
   // EmailJS
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
@@ -96,8 +86,6 @@ export function Contacts() {
     );
   };
 
-=======
->>>>>>> main
   return (
     <section id="contacts" className="py-20 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
       {/* Christmas decoration */}
@@ -180,15 +168,9 @@ export function Contacts() {
                 <div className="text-center">
                   <MapPin className="text-blue-600 mx-auto mb-4" size={64} />
                   <p className="text-gray-700 font-semibold mb-2">г. Алматы</p>
-<<<<<<< HEAD
                   <p className="text-gray-600">проспект Аль-Фараби, 93А</p>
                   <a
                     href="https://maps.app.goo.gl/C68aMy6cs7oxP9xa7"
-=======
-                  <p className="text-gray-600">проспект Аль-Фараби 93А</p>
-                  <a
-                    href="https://maps.google.com"
->>>>>>> main
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -201,7 +183,6 @@ export function Contacts() {
           </motion.div>
 
           {/* Contact Form */}
-<<<<<<< HEAD
           <motion.form
             ref={formRef}
             onSubmit={handleSubmit}
@@ -251,51 +232,6 @@ export function Contacts() {
             {success && <p className="text-green-600 mt-2">Сообщение отправлено!</p>}
             {error && <p className="text-red-600 mt-2">Ошибка при отправке, попробуйте снова.</p>}
           </motion.form>
-=======
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden"
-          >
-            <div className="bg-gradient-to-r from-red-600 to-red-800 p-6 text-white">
-              <h3 className="text-2xl font-bold">Напишите нам</h3>
-            </div>
-            <form className="p-6 space-y-4">
-              <div>
-                <label className="block text-gray-700 font-medium mb-2">Ваше имя</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  placeholder="Введите ваше имя"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700 font-medium mb-2">Email или телефон</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-                  placeholder="Введите email или телефон"
-                />
-              </div>
-              <div>
-                <label className="block text-gray-700 font-medium mb-2">Сообщение</label>
-                <textarea
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 resize-none"
-                  placeholder="Введите ваше сообщение"
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg hover:shadow-lg transition-all transform hover:scale-105 font-semibold flex items-center justify-center gap-2"
-              >
-                <Send size={20} />
-                Отправить сообщение
-              </button>
-            </form>
-          </motion.div>
->>>>>>> main
         </div>
 
         {/* Social Media */}
@@ -331,44 +267,6 @@ export function Contacts() {
             ))}
           </div>
         </motion.div>
-<<<<<<< HEAD
-=======
-
-        {/* Quick Info */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl p-12 text-white text-center shadow-2xl relative overflow-hidden"
-        >
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-4 left-10 text-9xl">🎓</div>
-            <div className="absolute bottom-4 right-10 text-9xl">📚</div>
-          </div>
-          
-          <div className="relative z-10">
-            <h3 className="text-3xl font-bold mb-4">Приемная комиссия работает круглый год!</h3>
-            <p className="text-xl text-blue-100 mb-6 max-w-3xl mx-auto">
-              Мы всегда рады ответить на ваши вопросы о поступлении, специальностях и условиях обучения. 
-              Приходите на консультацию или звоните нам!
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <a
-                href="tel:+77271234567"
-                className="px-8 py-4 bg-white text-blue-900 rounded-full hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg font-semibold"
-              >
-                Позвонить сейчас
-              </a>
-              <a
-                href="#applicants"
-                className="px-8 py-4 bg-red-600 text-white rounded-full hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg font-semibold"
-              >
-                Узнать о поступлении
-              </a>
-            </div>
-          </div>
-        </motion.div>
->>>>>>> main
       </div>
 
       <style>{`
@@ -379,8 +277,4 @@ export function Contacts() {
       `}</style>
     </section>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main

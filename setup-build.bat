@@ -1,34 +1,26 @@
 @echo off
-setlocal
+echo Установка зависимостей...
 
-REM Переключаемся на ветку gh-pages
-git checkout gh-pages
+:: Установка Radix UI
+npm install @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group ^
+@radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator ^
+@radix-ui/react-slider @radix-ui/react-switch @radix-ui/react-tabs ^
+@radix-ui/react-toggle-group @radix-ui/react-toggle @radix-ui/react-tooltip ^
+@radix-ui/react-menubar @radix-ui/react-navigation-menu
 
-REM Сливаем изменения из main с разрешением на разные истории
-git merge main --allow-unrelated-histories -m "Merge changes from main"
+:: Установка остальных зависимостей
+npm install react-hook-form input-otp react-resizable-panels sonner next-themes clsx
 
-REM Собираем проект
-echo Building project...
-npm install
+echo Зависимости установлены.
+echo.
+
+echo Запуск сборки проекта...
 npm run build
 
-IF %ERRORLEVEL% NEQ 0 (
-    echo Build failed. Exiting...
-    exit /b %ERRORLEVEL%
+if %ERRORLEVEL% NEQ 0 (
+    echo Ошибка сборки проекта!
+    pause
+) else (
+    echo Сборка завершена успешно!
+    pause
 )
-
-REM Копируем содержимое dist в корень ветки
-echo Copying build files...
-xcopy /Y /E /Q dist\* .\
-
-REM Добавляем файлы в git
-git add .
-
-REM Коммитим изменения
-git commit -m "Update site on GitHub Pages"
-
-REM Пушим на GitHub
-git push origin gh-pages
-
-echo Done! Site should be updated on GitHub Pages.
-pause
