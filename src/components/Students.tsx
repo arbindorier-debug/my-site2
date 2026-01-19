@@ -1,85 +1,91 @@
-import { motion } from 'framer-motion';
-import { BookOpen, Calendar, Trophy, Users, Briefcase, Heart, Laptop, Library } from 'lucide-react';
+import { motion } from "framer-motion";
+import { useLanguage } from "../i18n/LanguageContext";
+import {
+  BookOpen,
+  Calendar,
+  Monitor,
+  Library,
+  Briefcase,
+  Trophy,
+  Users,
+  Dumbbell,
+  Palette,
+} from "lucide-react";
 
 export function Students() {
+  const { t, get } = useLanguage();
+
+  // ✅ Ровно те 6 карточек, как на скрине (цветные шапки)
   const resources = [
     {
       icon: BookOpen,
-      title: 'Учебные материалы',
-      description: 'Электронная библиотека, учебники, методические пособия и дополнительные материалы для всех специальностей',
-      color: 'from-blue-600 to-blue-700',
+      title: t("students.resources.r1Title"),
+      description: t("students.resources.r1Desc"),
+      color: "from-blue-600 to-blue-700",
     },
     {
       icon: Calendar,
-      title: 'Расписание занятий',
-      description: 'Актуальное расписание лекций, практических занятий и консультаций в онлайн-формате',
-      color: 'from-red-600 to-red-700',
+      title: t("students.resources.r2Title"),
+      description: t("students.resources.r2Desc"),
+      color: "from-red-600 to-red-700",
     },
     {
-      icon: Laptop,
-      title: 'Компьютерные классы',
-      description: 'Современные компьютерные классы с лицензионным программным обеспечением',
-      color: 'from-purple-600 to-purple-700',
+      icon: Monitor,
+      title: t("students.resources.r3Title"),
+      description: t("students.resources.r3Desc"),
+      color: "from-purple-600 to-purple-700",
     },
     {
       icon: Library,
-      title: 'Библиотека',
-      description: 'Богатый фонд специализированной литературы, читальные залы и комфортные условия для учебы',
-      color: 'from-green-600 to-green-700',
+      title: t("students.resources.r4Title"),
+      description: t("students.resources.r4Desc"),
+      color: "from-green-600 to-green-700",
     },
     {
       icon: Briefcase,
-      title: 'Практика и стажировка',
-      description: 'Производственная практика на ведущих предприятиях города с возможностью дальнейшего трудоустройства',
-      color: 'from-orange-600 to-orange-700',
+      title: t("students.resources.r5Title"),
+      description: t("students.resources.r5Desc"),
+      color: "from-orange-600 to-orange-700",
     },
     {
       icon: Trophy,
-      title: 'Олимпиады и конкурсы',
-      description: 'Участие в республиканских и международных олимпиадах, конкурсах профессионального мастерства',
-      color: 'from-yellow-600 to-yellow-700',
+      title: t("students.resources.r6Title"),
+      description: t("students.resources.r6Desc"),
+      color: "from-yellow-600 to-yellow-700",
     },
   ];
 
   const activities = [
     {
       icon: Users,
-      title: 'Студенческий совет',
-      description: 'Активная студенческая жизнь, организация мероприятий, представление интересов студентов',
+      title: t("students.activities.a1Title"),
+      description: t("students.activities.a1Desc"),
+      color: "from-blue-600 to-blue-800",
     },
     {
-      icon: Trophy,
-      title: 'Спортивные секции',
-      description: 'Футбол, волейбол, баскетбол, настольный теннис, участие в соревнованиях между колледжами',
+      icon: Dumbbell,
+      title: t("students.activities.a2Title"),
+      description: t("students.activities.a2Desc"),
+      color: "from-red-600 to-red-800",
     },
     {
-      icon: Heart,
-      title: 'Творческие кружки',
-      description: 'Вокальная студия, танцевальный коллектив, КВН, театральная студия',
+      icon: Palette,
+      title: t("students.activities.a3Title"),
+      description: t("students.activities.a3Desc"),
+      color: "from-purple-600 to-purple-800",
     },
   ];
 
-  const support = [
-    'Психологическая поддержка и консультирование',
-    'Помощь в адаптации первокурсников',
-    'Кураторство и наставничество',
-    'Социальная поддержка для льготных категорий',
-    'Содействие в трудоустройстве выпускников',
-    'Карьерное консультирование',
-  ];
+  const supportList = Object.values(get("students.supportList") || {}) as string[];
 
   return (
     <section id="students" className="py-20 bg-gradient-to-b from-white to-blue-50 relative overflow-hidden">
-      {/* Christmas decoration */}
-      <div className="absolute top-0 left-0 right-0 flex justify-center gap-8 pointer-events-none">
-        {[...Array(5)].map((_, i) => (
-          <span key={i} className="text-6xl opacity-20" style={{ animation: `float ${3 + i}s ease-in-out infinite` }}>
-            ❄️
-          </span>
-        ))}
-      </div>
+      {/* decorations */}
+      <div className="absolute top-10 left-10 text-6xl opacity-10 animate-pulse">🎓</div>
+      <div className="absolute bottom-10 right-10 text-6xl opacity-10 animate-pulse">📚</div>
 
       <div className="container mx-auto px-4">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -87,165 +93,146 @@ export function Students() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
-            Студентам
+            {t("students.sectionTitle")}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-red-600 mx-auto mb-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-600 mx-auto mb-6"></div>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Все необходимое для успешной учебы и яркой студенческой жизни
+            {t("students.subtitle")}
           </p>
         </motion.div>
 
-        {/* Resources */}
+        {/* ✅ Учебные ресурсы и возможности (как на скрине) */}
         <div className="mb-20">
           <h3 className="text-3xl font-bold text-blue-900 mb-10 text-center">
-            Учебные ресурсы и возможности
+            {t("students.resourcesTitle")}
           </h3>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {resources.map((resource, index) => (
+            {resources.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden group"
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all overflow-hidden group border border-gray-100"
               >
-                <div className={`bg-gradient-to-r ${resource.color} p-6 relative overflow-hidden`}>
-                  <div className="absolute top-0 right-0 text-7xl opacity-20">
-                    <resource.icon size={80} />
+                {/* colored header */}
+                <div className={`bg-gradient-to-r ${item.color} p-6 text-white relative overflow-hidden`}>
+                  {/* big icon shadow */}
+                  <div className="absolute top-0 right-0 text-7xl opacity-15">
+                    <item.icon size={90} />
                   </div>
+
                   <div className="relative z-10">
                     <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-4 backdrop-blur-sm">
-                      <resource.icon className="text-white" size={28} />
+                      <item.icon size={28} />
                     </div>
-                    <h4 className="text-xl font-bold text-white">{resource.title}</h4>
+                    <h4 className="text-xl font-bold leading-tight">{item.title}</h4>
                   </div>
                 </div>
+
+                {/* body */}
                 <div className="p-6">
-                  <p className="text-gray-600 leading-relaxed">{resource.description}</p>
+                  <p className="text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Student Life */}
+        {/* Студенческая жизнь */}
         <div className="mb-20">
           <h3 className="text-3xl font-bold text-blue-900 mb-10 text-center">
-            Студенческая жизнь
+            {t("students.lifeTitle")}
           </h3>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {activities.map((activity, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all border-t-4 border-blue-600"
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                className={`bg-gradient-to-br ${activity.color} rounded-2xl p-6 text-white shadow-lg`}
               >
-                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-4">
-                  <activity.icon className="text-blue-600" size={32} />
-                </div>
-                <h4 className="text-xl font-bold text-blue-900 mb-3">{activity.title}</h4>
-                <p className="text-gray-600 leading-relaxed">{activity.description}</p>
+                <activity.icon size={40} className="mb-4" />
+                <h4 className="text-xl font-bold mb-2">{activity.title}</h4>
+                <p className="text-white/90 leading-relaxed">{activity.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
 
-        {/* Support Services */}
+        {/* Поддержка студентов */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 mb-20 border-t-4 border-red-600"
         >
-          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border-t-4 border-red-600">
-            <h3 className="text-3xl font-bold text-blue-900 mb-8 text-center">
-              Поддержка студентов
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {support.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-4 p-4 rounded-xl hover:bg-blue-50 transition-colors"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Heart className="text-white" size={24} />
-                  </div>
-                  <p className="text-gray-700 font-medium">{item}</p>
-                </motion.div>
-              ))}
-            </div>
+          <h3 className="text-3xl font-bold text-blue-900 mb-8">
+            {t("students.supportTitle")}
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {supportList.map((s, i) => (
+              <div
+                key={i}
+                className="flex items-start gap-3 p-4 rounded-xl hover:bg-blue-50 transition-colors"
+              >
+                <div className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                  <span className="text-white text-sm">✓</span>
+                </div>
+                <p className="text-gray-700 leading-relaxed">{s}</p>
+              </div>
+            ))}
           </div>
         </motion.div>
 
-        {/* Important Info */}
+        {/* Важная информация */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl p-12 text-white shadow-2xl relative overflow-hidden"
+          className="bg-gradient-to-r from-red-600 to-blue-600 rounded-3xl p-12 text-white shadow-2xl text-center"
         >
-          <div className="absolute top-0 right-0 text-9xl opacity-10">🎓</div>
-          
-          <div className="relative z-10">
-            <h3 className="text-3xl font-bold mb-6 text-center">
-              Важная информация для студентов
-            </h3>
-            <div className="max-w-4xl mx-auto space-y-4">
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <h4 className="text-xl font-bold mb-3">📚 Учебный процесс</h4>
-                <p className="text-blue-100 leading-relaxed">
-                  Занятия проводятся в соответствии с утвержденным расписанием. Обязательно посещение всех 
-                  видов учебных занятий. Текущий контроль успеваемости осуществляется через рубежный контроль, 
-                  промежуточные аттестации и итоговую аттестацию.
-                </p>
-              </div>
+          <h3 className="text-3xl font-bold mb-8">
+            {t("students.importantTitle")}
+          </h3>
 
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <h4 className="text-xl font-bold mb-3">⚠️ Академическая честность</h4>
-                <p className="text-blue-100 leading-relaxed">
-                  В колледже действуют строгие правила академической честности. Плагиат, списывание и другие 
-                  формы академической нечестности строго запрещены и влекут за собой дисциплинарные взыскания.
-                </p>
-              </div>
-
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
-                <h4 className="text-xl font-bold mb-3">🎯 Возможности для развития</h4>
-                <p className="text-blue-100 leading-relaxed">
-                  Активно участвуйте в жизни колледжа: научных конференциях, олимпиадах, конкурсах 
-                  профессионального мастерства, спортивных и культурных мероприятиях. Это отличная возможность 
-                  проявить себя и получить дополнительные навыки.
-                </p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-6xl mx-auto">
+            <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+              <h4 className="font-bold mb-3">{t("students.block1Title")}</h4>
+              <p className="text-white/90 leading-relaxed">{t("students.block1Text")}</p>
             </div>
-
-            <div className="mt-8 text-center">
-              <p className="text-xl mb-4">Есть вопросы? Обращайтесь в учебный отдел!</p>
-              <a
-                href="#contacts"
-                className="inline-block px-8 py-4 bg-white text-blue-900 rounded-full hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg font-semibold"
-              >
-                Контакты
-              </a>
+            <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+              <h4 className="font-bold mb-3">{t("students.block2Title")}</h4>
+              <p className="text-white/90 leading-relaxed">{t("students.block2Text")}</p>
+            </div>
+            <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm">
+              <h4 className="font-bold mb-3">{t("students.block3Title")}</h4>
+              <p className="text-white/90 leading-relaxed">{t("students.block3Text")}</p>
             </div>
           </div>
+
+          <p className="mt-8 text-white/90 text-lg">
+            {t("students.questions")}
+          </p>
+
+          <a
+            href="#contacts"
+            className="inline-block mt-6 px-8 py-4 bg-white text-blue-900 rounded-full hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg font-semibold"
+          >
+            {t("students.contactsBtn")}
+          </a>
         </motion.div>
       </div>
-
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-      `}</style>
     </section>
   );
 }

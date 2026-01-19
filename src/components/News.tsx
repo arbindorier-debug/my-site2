@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const RSS_URL =
-  "https://rss.app/feeds/v1.1/svcXZHQJDKz5TN4t.json";
+  "https://rss.app/feeds/v1.1/SmYr9x7qLAlo0xiv.json";
 
 /* =========================
    Типы RSS
@@ -41,6 +42,8 @@ type InstaPost = {
 };
 
 export function News() {
+  const { t } = useLanguage();
+
   const [posts, setPosts] = useState<InstaPost[]>([]);
   const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -120,14 +123,15 @@ export function News() {
       className="py-20 bg-gradient-to-b from-blue-50 to-white relative"
     >
       <div className="container mx-auto px-4">
+
         {/* Заголовок */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
-            Новости колледжа
+            {t("news.sectionTitle")}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-600 mx-auto mb-6" />
           <p className="text-xl text-gray-700">
-            Официальная лента Instagram МИТУ
+            {t("news.subtitle")}
           </p>
         </div>
 
@@ -136,6 +140,7 @@ export function News() {
           <button
             onClick={() => scroll("left")}
             className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-100"
+            aria-label="Prev"
           >
             <ChevronLeft />
           </button>
@@ -143,6 +148,7 @@ export function News() {
           <button
             onClick={() => scroll("right")}
             className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-3 hover:bg-gray-100"
+            aria-label="Next"
           >
             <ChevronRight />
           </button>
@@ -166,7 +172,7 @@ export function News() {
                   {post.avatar && (
                     <img
                       src={post.avatar}
-                      alt="MITU"
+                      alt={t("news.avatarAlt")}
                       className="w-10 h-10 rounded-full object-cover"
                       loading="lazy"
                     />
@@ -193,7 +199,7 @@ export function News() {
                   )}
                   {post.type === "video" && (
                     <div className="absolute top-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded-full">
-                      ▶ Reels
+                      {t("news.reelsLabel")}
                     </div>
                   )}
                 </div>

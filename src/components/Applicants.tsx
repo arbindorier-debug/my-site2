@@ -1,55 +1,58 @@
 import { motion } from 'framer-motion';
 import { FileText, Calendar, CheckCircle, Users, Phone, Mail, Clock, MapPin } from 'lucide-react';
+import { useLanguage } from '../i18n/LanguageContext';
 
 export function Applicants() {
+  const { t } = useLanguage();
+
   const steps = [
     {
       icon: FileText,
-      title: 'Подача документов',
-      description: 'Соберите необходимый пакет документов: аттестат об основном среднем или общем среднем образовании, удостоверение личности, медицинская справка формы 086-у, 6 фотографий 3x4 см.',
+      title: t('applicants.steps.s1Title'),
+      description: t('applicants.steps.s1Desc'),
     },
     {
       icon: Users,
-      title: 'Консультация',
-      description: 'Получите консультацию приемной комиссии по выбору специальности, условиям обучения, стоимости и возможностям получения грантов и льгот.',
+      title: t('applicants.steps.s2Title'),
+      description: t('applicants.steps.s2Desc'),
     },
     {
       icon: CheckCircle,
-      title: 'Зачисление',
-      description: 'После проверки документов и прохождения собеседования вы получите уведомление о зачислении и сможете приступить к оформлению договора на обучение.',
+      title: t('applicants.steps.s3Title'),
+      description: t('applicants.steps.s3Desc'),
     },
     {
       icon: Calendar,
-      title: 'Начало обучения',
-      description: 'Приступайте к занятиям с 1 сентября. Участвуйте в торжественной линейке, знакомьтесь с преподавателями и однокурсниками, получайте учебные материалы.',
+      title: t('applicants.steps.s4Title'),
+      description: t('applicants.steps.s4Desc'),
     },
   ];
 
   const requirements = [
-    'Аттестат об основном среднем (9 классов) или общем среднем (11 классов) образовании',
-    'Копия удостоверения личности (или свидетельства о рождении)',
-    'Медицинская справка формы 086-у',
-    '6 фотографий размером 3x4 см',
-    'Сертификат ЕНТ (для поступающих на базе 11 классов)',
-    'Заявление на имя директора колледжа',
+    t('applicants.docsList.d1'),
+    t('applicants.docsList.d2'),
+    t('applicants.docsList.d3'),
+    t('applicants.docsList.d4'),
+    t('applicants.docsList.d5'),
+    t('applicants.docsList.d6'),
   ];
 
   const benefits = [
     {
-      title: 'Государственный грант',
-      description: 'Возможность обучения на бесплатной основе для обладателей государственного образовательного гранта',
+      title: t('applicants.benefits.b1Title'),
+      description: t('applicants.benefits.b1Desc'),
     },
     {
-      title: 'Рассрочка платежа',
-      description: 'Гибкая система оплаты обучения с возможностью рассрочки на весь учебный год',
+      title: t('applicants.benefits.b2Title'),
+      description: t('applicants.benefits.b2Desc'),
     },
     {
-      title: 'Льготы для сирот',
-      description: 'Специальные условия поступления и обучения для детей-сирот и детей, оставшихся без попечения родителей',
+      title: t('applicants.benefits.b3Title'),
+      description: t('applicants.benefits.b3Desc'),
     },
     {
-      title: 'Общежитие',
-      description: 'Предоставление мест в общежитии для иногородних студентов (при наличии мест)',
+      title: t('applicants.benefits.b4Title'),
+      description: t('applicants.benefits.b4Desc'),
     },
   ];
 
@@ -67,18 +70,18 @@ export function Applicants() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-4">
-            Абитуриентам
+            {t('applicants.sectionTitle')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-blue-600 mx-auto mb-6"></div>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-            Вся необходимая информация для поступления в МИТУ
+            {t('applicants.subtitle')}
           </p>
         </motion.div>
 
         {/* Steps */}
         <div className="mb-20">
           <h3 className="text-3xl font-bold text-blue-900 mb-10 text-center">
-            Процесс поступления
+            {t('applicants.processTitle')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {steps.map((step, index) => (
@@ -118,7 +121,7 @@ export function Applicants() {
         >
           <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border-t-4 border-red-600">
             <h3 className="text-3xl font-bold text-blue-900 mb-8">
-              Необходимые документы
+              {t('applicants.docsTitle')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {requirements.map((req, index) => (
@@ -143,7 +146,7 @@ export function Applicants() {
         {/* Benefits */}
         <div className="mb-20">
           <h3 className="text-3xl font-bold text-blue-900 mb-10 text-center">
-            Льготы и преимущества
+            {t('applicants.benefitsTitle')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => (
@@ -171,22 +174,22 @@ export function Applicants() {
           className="bg-gradient-to-r from-red-600 to-blue-600 rounded-3xl p-12 text-white shadow-2xl"
         >
           <h3 className="text-3xl font-bold mb-8 text-center">
-            Приемная комиссия
+            {t('applicants.приемTitle')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
                 <Clock size={32} />
               </div>
-              <p className="font-semibold mb-2">Время работы</p>
-              <p className="text-white/90">Пн-Пт: 9:00 - 18:00</p>
-              <p className="text-white/90">Сб: 9:00 - 14:00</p>
+              <p className="font-semibold mb-2">{t('applicants.hoursLabel')}</p>
+              <p className="text-white/90">{t('applicants.hoursLine1')}</p>
+              <p className="text-white/90">{t('applicants.hoursLine2')}</p>
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
                 <Phone size={32} />
               </div>
-              <p className="font-semibold mb-2">Телефон</p>
+              <p className="font-semibold mb-2">{t('applicants.phoneLabel')}</p>
               <p className="text-white/90">+7 (775) 007-50-55</p>
               <p className="text-white/90">+7 (727) 300-07-07</p>
             </div>
@@ -194,7 +197,7 @@ export function Applicants() {
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
                 <Mail size={32} />
               </div>
-              <p className="font-semibold mb-2">Email</p>
+              <p className="font-semibold mb-2">{t('applicants.emailLabel')}</p>
               <p className="text-white/90">college@metu.kz</p>
               <p className="text-white/90"></p>
             </div>
@@ -202,9 +205,9 @@ export function Applicants() {
               <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm">
                 <MapPin size={32} />
               </div>
-              <p className="font-semibold mb-2">Адрес</p>
-              <p className="text-white/90">г. Алматы</p>
-              <p className="text-white/90">пр. Аль-Фараби 93A</p>
+              <p className="font-semibold mb-2">{t('applicants.addressLabel')}</p>
+              <p className="text-white/90">{t('applicants.addressCity')}</p>
+              <p className="text-white/90">{t('applicants.addressStreet')}</p>
             </div>
           </div>
 
@@ -213,7 +216,7 @@ export function Applicants() {
               href="#contacts"
               className="inline-block px-8 py-4 bg-white text-blue-900 rounded-full hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg font-semibold"
             >
-              Записаться на консультацию
+              {t('applicants.cta')}
             </a>
           </div>
         </motion.div>

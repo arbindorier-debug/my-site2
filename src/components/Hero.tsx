@@ -2,8 +2,11 @@ import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import heroBg from "../assets/hero-bg.jpeg";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="home"
@@ -13,70 +16,50 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <ImageWithFallback
           src={heroBg}
-          alt="Международный инженерно-технологический колледж"
+          alt={t("hero.backgroundAlt")}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/80 via-blue-900/70 to-blue-900/90" />
-      </div>
-
-      {/* CHRISTMAS TREES SVG */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 pointer-events-none">
-        <svg viewBox="0 0 1200 200" className="w-full h-32 opacity-20">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <g key={i} transform={`translate(${i * 200 + 50}, 120)`}>
-              <polygon points="0,-60 -20,0 20,0" fill="#059669" />
-              <polygon points="0,-40 -25,20 25,20" fill="#10b981" />
-              <polygon points="0,-20 -30,40 30,40" fill="#34d399" />
-              <rect x="-5" y="40" width="10" height="20" fill="#78350f" />
-            </g>
-          ))}
-        </svg>
+        <div className="absolute inset-0 bg-black/60" />
       </div>
 
       {/* CONTENT */}
-      <div className="relative z-20 container mx-auto px-4 text-center">
-        <motion.div
+      <div className="relative z-10 text-center px-4">
+        <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-bold text-white mb-6"
         >
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 px-12">
-            Международный<br />
-            Инженерно-технологический<br />
-            колледж
-          </h1>
+          {t("Международный инженерно-технологический колледж")}
+        </motion.h1>
 
-          <p className="text-xl md:text-2xl text-blue-100 mb-6 max-w-3xl mx-auto">
-            Современное образование мирового уровня в сердце Алматы
-          </p>
-
-          <div className="flex flex-wrap gap-4 justify-center mb-8">
-            <a
-              href="#applicants"
-              className="px-8 py-4 bg-red-600 text-white rounded-full hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg"
-            >
-              Поступить в колледж
-            </a>
-            <a
-              href="#about"
-              className="px-8 py-4 bg-white text-blue-900 rounded-full hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg"
-            >
-              Узнать больше
-            </a>
-          </div>
-
-          <p className="text-white/80 mb-2">📍 Алматы, проспект Аль-Фараби</p>
-          <p className="text-white/80">✨ С Новым годом! ✨</p>
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-8"
         >
-          <ChevronDown size={40} className="text-white/60" />
-        </motion.div>
+          {t("hero.subtitle")}
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="text-white/80"
+        >
+          {t("hero.newYear")}
+        </motion.p>
       </div>
+
+      {/* SCROLL ICON */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+      >
+        <ChevronDown size={40} className="text-white/60" />
+      </motion.div>
     </section>
   );
 }
